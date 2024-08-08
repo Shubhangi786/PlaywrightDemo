@@ -1,0 +1,53 @@
+
+
+import {test, expect} from './pageObjects/fixture';
+
+test.beforeAll(async ({ browser }) => {
+  const context = await browser.newContext();
+  exports.page = await context.newPage();
+});
+
+
+test.describe('test', ()=>{
+
+  test('Add customer', async({addCustomerPage, customer})=>{
+    await addCustomerPage.goToAddCustomer();
+    await addCustomerPage.addCustomer(customer.firstName,customer.lastName,customer.postCode);
+  });
+  
+  test('Open account', async ({openAccountPage, customer})=>{
+    const userName = customer.firstName.concat(" ", customer.lastName);
+    console.log(userName);
+    await openAccountPage.goToOpenAccount();
+    await openAccountPage.openAccount(userName, 'Dollar');
+  });
+
+  test('Search customer on Customers page', async({searchCustomerPage, customer})=>{
+    await searchCustomerPage.goToCustomers();
+    await searchCustomerPage.searchCustomer(customer.firstName);
+    await expect(searchCustomerPage.searchResults).toContainText(customer.firstName);
+  });
+})
+
+test.afterAll(async ({page}) => {
+    await page.close();
+});
+
+  
+
+
+
+
+
+
+
+
+
+  // test('test',async ({}) => {
+  //   const managerLoginPage = new ManagerLoginPage(page);
+  //   await managerLoginPage.managerLoginClick();
+  //   const addCustomerPage = new AddCustomerPage(page);
+  //   await addCustomerPage.goto();
+  //   await addCustomerPage.addCustomer(customer.firstName, customer.lastName, customer.postCode);
+
+  // });
