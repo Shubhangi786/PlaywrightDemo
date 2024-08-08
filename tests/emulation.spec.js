@@ -1,5 +1,5 @@
 
-import { test, expect, devices, chromium, webkit} from '@playwright/test';
+const { test, expect, devices} = require ('@playwright/test');
 
 const deviceList = [devices['Pixel 5'], devices['iPhone 11']];
 

@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+const { test, expect } = require('@playwright/test');
 
 test('test', async ({ page }) => {
   page.setViewportSize({ width: 1600, height: 1200 });

@@ -1,6 +1,6 @@
-import { expect } from "@playwright/test";
 
-export class SearchCustomerPage{
+
+class SearchCustomerPage {
 
     constructor(page){
         this.page = page;
@@ -19,3 +19,4 @@ export class SearchCustomerPage{
     }
 
 }
+module.exports = { SearchCustomerPage };

@@ -1,4 +1,4 @@
-import { test, expect, chromium } from '@playwright/test';
+const { test, expect, chromium } = require ('@playwright/test');
 
 test.describe.configure({ mode: 'parallel' });
 

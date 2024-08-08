@@ -1,12 +1,10 @@
 
+const {test, expect} = require('./pageObjects/fixture');
 
-import {test, expect} from './pageObjects/fixture';
-
-test.beforeAll(async ({ browser }) => {
+test.beforeAll('Testing', async({browser})=>{
   const context = await browser.newContext();
-  exports.page = await context.newPage();
+  module.exports.page = await context.newPage();
 });
-
 
 test.describe('test', ()=>{
 
@@ -17,7 +15,6 @@ test.describe('test', ()=>{
   
   test('Open account', async ({openAccountPage, customer})=>{
     const userName = customer.firstName.concat(" ", customer.lastName);
-    console.log(userName);
     await openAccountPage.goToOpenAccount();
     await openAccountPage.openAccount(userName, 'Dollar');
   });
@@ -29,9 +26,10 @@ test.describe('test', ()=>{
   });
 })
 
-test.afterAll(async ({page}) => {
-    await page.close();
+test.afterAll('Closing browser', async({page1})=>{
+  await page1.close();
 });
+
 
   
 

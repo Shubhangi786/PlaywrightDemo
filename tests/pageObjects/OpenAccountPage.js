@@ -1,14 +1,11 @@
-export class OpenAccountPage{
 
-    
-
+class OpenAccountPage{
     constructor(page){
         this.page =page;
         this.openAccountBtn = this.page.getByRole('button', { name: 'Open Account' });
         this.userName = this.page.locator('#userSelect');
         this.currency = this.page.locator('#currency');
         this.processBtn = this.page.getByRole('button', { name: 'Process' });
-    
     }
 
     async goToOpenAccount(){
@@ -34,5 +31,6 @@ export class OpenAccountPage{
             dialog.dismiss().catch(() => {});
           });
     }
-
 }
+
+module.exports={OpenAccountPage};

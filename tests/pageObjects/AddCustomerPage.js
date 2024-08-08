@@ -1,5 +1,6 @@
 
-export class AddCustomerPage {
+
+class AddCustomerPage {
 
     constructor(page) {
       this.page = page;
@@ -31,3 +32,4 @@ export class AddCustomerPage {
     }
   }
   
+module.exports={ AddCustomerPage };
